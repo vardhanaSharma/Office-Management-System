@@ -1,4 +1,18 @@
-# Frontend
+FEATURES OF OFFICE MANAGEMENT SYSTEM
+
+   The core features of this system are-
+•	The focused objective of “Office Management System” is designing a scheduling system for a work centre.  
+•	Proper Login/ Signup Authentication for Super admin,  Registered company admin and the Employee
+•	It is a distributed application, developed to maintain the details of employees working in any organization. 
+•	It maintains the information about the personal details of their employees.
+•	It handles different departments in the office
+•	It handles all the office related work such as attendance management. 
+•	Project and its task as well as team management Notifications management 
+•	Task Progress tracking  
+•	It has the subscription facilitys that different companies can resgister and purchase plan (free/premium etc.) as per their requirement. 
+•	Companies dashboard will be dynamically updated with only those features which are included in the plan.
+•	Payment can be done through stripe payment gateway integrated and many more.
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.2.
 
