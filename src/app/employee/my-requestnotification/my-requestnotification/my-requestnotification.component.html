@@ -1,0 +1,21 @@
+
+    <div *ngFor="let p of taskcountarray">
+    <div class="box-body p-0">
+        <div class="p-3 d-flex align-items-center bg-light border-bottom osahan-post-header">
+            <div class="dropdown-list-image mr-3">
+                <mat-icon mat-list-icon>notifications</mat-icon> 
+            </div>
+            <div class="font-weight-bold mr-3">
+                <div class="noti text-truncate">{{p.info}}</div>
+                <!-- <div class="small">Income tax sops on the cards, The bias in VC funding, and other top news for you</div> -->
+            </div>
+            <span class="ml-auto mb-auto">
+             
+                <div class="dt text-right text-muted pt-10">{{p.date}}</div>
+                <div class="dt1 text-right text-muted pt-10">{{p.time}}</div>
+
+            </span>
+            </div>
+        </div>
+    </div>
+    

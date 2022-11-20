@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="col-xs-2">
+  <input  [(ngModel)]="FilterText" (keyup)="filterData()" type="text" class="searchbox" placeholder="Search here..">
+  </div>
+    
+  </div>
+  <!-- </div> -->
+  <div class="container">
+  <!-- <div class="mat-elevation-z8"> -->
+  
+  <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8" >
+  
+    <ng-container matColumnDef="planName">
+      <!-- <th mat-header-cell *matHeaderCellDef mat-sort-header > fullName </th> -->
+      <th mat-header-cell *matHeaderCellDef > Plan </th>
+      <td mat-cell *matCellDef="let element" >{{element.planName}} </td>
+  
+    </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef> Price per Month </th>
+      <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="minEmployee">
+      <th mat-header-cell *matHeaderCellDef> minEmployee </th>
+      <td mat-cell *matCellDef="let element"> {{element.minEmployee}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="maxEmployee">
+      <th mat-header-cell *matHeaderCellDef>maxEmployee </th>
+      <td mat-cell *matCellDef="let element"> {{element.maxEmployee}} </td>
+    </ng-container>
+    
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="features">
+      <th mat-header-cell *matHeaderCellDef> Features </th>
+      <td mat-cell *matCellDef="let element"> {{element.features}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+  <mat-paginator [length]="100"
+                [pageSize]="10"
+                [pageSizeOptions]="[5, 10, 25, 100]"
+                aria-label="Select page">
+  </mat-paginator>
+  <!-- </div> -->
+  </div>

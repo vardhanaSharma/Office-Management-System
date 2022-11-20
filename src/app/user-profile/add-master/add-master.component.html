@@ -1,0 +1,59 @@
+
+      <div class="row">
+
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header">
+                      <h5 class="card-title">Add your department here</h5>
+                      <!-- <h6 class="card-subtitle text-muted">Bootstrap column layout.</h6> -->
+                  </div>
+                  <div class="card-body">
+                    <form [formGroup]="addMaster" (ngSubmit)="Submit()">
+                      <div class="form-group">
+                        <input type="text" class="form-control" formControlName="masterName"  [(ngModel)]="masterService.selectedMaster.masterName" name="masterName"
+                        placeholder="Master Name" required>
+                      </div>
+
+                   
+                      <!-- <div class="form-group" *ngFor="let masterName of v; let i=index ">
+                        <input type="text" class="form-control" formControlName="masterName"  [(ngModel)]="masterName.masterName" name="v{{i}}"
+                        placeholder="Master Name" >
+                        <button (click)="removev(i)">Remove</button>
+
+                      </div>
+                      <button (click)="addv()">ADD</button> -->
+
+
+                      <div class="form-group">
+                        <input type="hidden" class="form-control" formControlName="companyName"  [(ngModel)]="userDetails.companyName" name="companyName"
+                        placeholder="Company Name" required>
+                      </div>
+
+                      <!-- <div class="form-group">
+                        <input type="text" class="form-control" formControlName="companyName"[(ngModel)]="userDetails.companyName" name ="companyName"
+                        placeholder="Company" >
+                      </div> -->
+                    
+                        <div class="text-center">
+                        <button type="submit" class="submitbtm btn btn-info text-center text-white ">Add Master</button>
+                        <!-- <input class="text-center" type="submit" value="add empoyee"> -->
+                     </div>
+                    </form> 
+                      
+                      <!-- Success message-->
+                      <div class="success" *ngIf="showSucessMessage">
+                        Saved successfully
+                      </div> 
+                      
+                      <!-- Error message -->
+                       <div class="alert" *ngIf="serverErrorMessages">
+                        {{serverErrorMessages}}
+                      </div>   
+                      
+                      
+                  </div>
+              </div>
+          </div>
+
+      </div>
+

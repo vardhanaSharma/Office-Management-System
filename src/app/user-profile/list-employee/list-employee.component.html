@@ -1,0 +1,109 @@
+<!-- <div class="search container"> -->
+  <label class="text-white" for="">{{userDetails.companyName}}</label>
+  
+<div class="row">
+  <div class="col-xs-2">
+<input  [(ngModel)]="FilterText" (keyup)="filterData()" type="text" class="searchbox" placeholder="Search here..">
+<!-- <input  (keyup)="filterData()" type="text" class="searchbox" placeholder="Search here.." value=""> -->
+<!-- <button value="{{userDetails.companyName}}" class="btn btn-primary"  (onclick)="filterData()"></button> -->
+  </div>
+  
+</div>
+<div class="len">
+  <label for="">Total no. of employees: {{this.lengthhh}}</label>
+</div>
+<!-- </div> -->
+<div class="container">
+<!-- <div class="mat-elevation-z8"> -->
+
+<table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8" >
+
+
+  <ng-container matColumnDef="fullName">
+    <!-- <th mat-header-cell *matHeaderCellDef mat-sort-header > fullName </th> -->
+    <th mat-header-cell *matHeaderCellDef > Name </th>
+    <td mat-cell *matCellDef="let element" >{{element.fullName}} </td>
+
+  </ng-container>
+  <!-- Name Column -->
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> email </th>
+    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="phone">
+    <th mat-header-cell *matHeaderCellDef> Phone </th>
+    <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="masters">
+    <th mat-header-cell *matHeaderCellDef> Dept </th>
+    <td mat-cell *matCellDef="let element"> {{element.masters}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="companyName">
+    <th mat-header-cell *matHeaderCellDef> Company </th>
+    <td mat-cell *matCellDef="let element" > {{element.companyName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="joiningDate">
+    <th mat-header-cell *matHeaderCellDef> Join Date </th>
+    <td mat-cell *matCellDef="let element"> {{element.joiningDate | date:'mediumDate'}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="currentSalary">
+    <th mat-header-cell *matHeaderCellDef> Salary </th>
+    <td mat-cell *matCellDef="let element"> {{element.currentSalary}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef> Action </th>
+    <td mat-cell *matCellDef="let element"> <a routerLink="/edit/{{element._id}}"><button mat-icon-button color="primary" class="example-icon"  aria-label="Example icon-button with share icon" >
+      <mat-icon>edit</mat-icon>
+  </button></a>
+  <button mat-icon-button class="example-icon" color="warn" aria-label="Example icon-button with share icon" (click)="deleteEmployee(element._id)">
+    <!-- <button mat-icon-button class="example-icon" color="warn" aria-label="Example icon-button with share icon" (click)="viewEmployee(element._id)"> -->
+    <mat-icon >delete</mat-icon> 
+</button>
+<!-- <button mat-icon-button class="example-icon" color="secondary" aria-label="Example icon-button with share icon" (click)="viewEmployee(element._id)">
+  <mat-icon >remove_red_eye</mat-icon> 
+</button> -->
+<a routerLink="/employees/{{element._id}}"><button mat-icon-button color="secondary" class="example-icon"  aria-label="Example icon-button with share icon" >
+  <mat-icon>remove_red_eye</mat-icon>
+</button></a>
+ </td>
+  </ng-container>
+
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef> Inactive</th>
+    <td mat-cell *matCellDef="let element">
+      <section class="example-section">
+        <mat-slide-toggle
+            class="example-margin"
+            [color]="color"
+            [checked]="checked"
+            [disabled]="disabled">
+        </mat-slide-toggle>
+      </section>
+ </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page">
+</mat-paginator>
+
+<ng-template pTemplate="paginatorleft" let-providerList>
+  <span>
+          {{'Showing'}} {{providerList.totalRecords < 1 ? 0 : providerList.first + 1}} {{'to'}}
+    {{providerList.totalRecords > 0 ? ((providerList.rows+ providerList.first) <= providerList.totalRecords ? (providerList.rows + providerList.first) :  providerList.totalRecords) : 0}}
+{{'of'}} {{providerList.totalRecords ? providerList.totalRecords : 0}} {{'records'}} </span>
+</ng-template>
+<!-- </div> -->
+</div>

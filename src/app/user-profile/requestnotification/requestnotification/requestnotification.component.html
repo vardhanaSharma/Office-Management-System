@@ -1,0 +1,79 @@
+<!-- <h1 class="h3 mb-3 text-center">Add New Employee</h1> -->
+<!-- <div class="container d-flex justify-content-center align-items-center py-3 border rounded" style="width: 800px;"> -->
+    <div class="row">
+
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <h5 class="card-title">Add notification</h5>
+              <!-- <h6 class="card-subtitle text-muted">Bootstrap column layout.</h6> -->
+            </div>
+            <div class="card-body">
+              <form [formGroup]="addRequestNotification" (ngSubmit)="Submit()">
+                <div class="form-group">
+                  <input type="text" class="form-control" formControlName="info"
+                    [(ngModel)]="requestnotificationService.selectedRequstNotification.info" name="info" placeholder="Notification"
+                    required>
+                </div>
+               
+
+                  <div class = "form-group">
+                    <select class = "form-control" formControlName="fullName" [(ngModel)]="requestnotificationService.selectedRequstNotification.fullName" (change)="onChange2($event)" name ="fullName">
+                      <option value="" class="text-center" disabled selected >Select Employee</option>
+                      <option *ngFor="let m of employeecountarray" [value]="m">{{m}}</option>
+                    </select>
+                 </div>
+                 <div class="form-group">
+                  <input type="text" class="form-control" formControlName="email"
+                      [(ngModel)]="this.getSelectdEmployeeEmailOutOfArray" name="email"
+                      placeholder="Employee Email">
+              </div>
+
+                <div class="form-group">
+                    <input type="hidden" class="form-control" formControlName="date"
+                    [(ngModel)]="this.changedDate" name="date" placeholder="Date"
+                      required>
+
+                  </div>
+                  <div class="form-group">
+                    <input type="hidden" class="form-control" formControlName="time"
+                    [(ngModel)]="this.changedTime" name="time" placeholder="Time"
+                      required>
+                  </div>
+      
+                <div class="form-group">
+                  <input type="hidden" class="form-control" formControlName="companyName"
+                    [(ngModel)]="userDetails.companyName" name="companyName" placeholder="Company">
+                </div>
+      
+                <div class="text-center">
+                  <button class="submitbtm btn btn-info text-center text-white ">Notify</button>
+                  <!-- <input class="text-center" type="submit" value="add empoyee"> -->
+                </div>
+              </form>
+              <!-- <button (click)='changeFormat(today)'>Change Date</button> -->
+<p>
+  Current Date:  {{ this.changedDate }}
+</p>
+<p>
+    Current Time:  {{ this.changedTime }}
+  </p>
+      
+              <!-- Success message-->
+              <div class="success" *ngIf="showSucessMessage">
+                Saved successfully
+              </div>
+      
+              <!-- Error message -->
+              <div class="alert" *ngIf="serverErrorMessages">
+                {{serverErrorMessages}}
+              </div>
+      
+      
+            </div>
+          </div>
+        </div>
+      
+      </div>
+      
+      <!-- </div> -->

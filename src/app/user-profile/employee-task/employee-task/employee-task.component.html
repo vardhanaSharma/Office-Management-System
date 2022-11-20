@@ -1,0 +1,129 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Add project task details </h5>
+                <!-- <h6 class="card-subtitle text-muted">Bootstrap column layout.</h6> -->
+            </div>
+            <div class="card-body">
+                <form [formGroup]="addTask" (ngSubmit)="Submit()">
+
+                    <div class="form-group">
+                        <select class="form-control text-center" formControlName="projectName" (change)="[onChange($event),onChange1($event)]" 
+                            [(ngModel)]="taskService.selectedTask.projectName" name="projectName">
+                            <option value="" class="text-center" disabled selected>Choose Project</option>
+                            <option *ngFor="let m of getProjects" [value]="m">{{m}}</option>
+                        </select>
+                    </div>
+
+                    <!-- <div class="form-group">
+                        <select class="form-control" formControlName="reportingManager"
+                            [(ngModel)]="taskService.selectedTask.reportingManager" name="reportingManager">
+                            <option value="" class="text-center" disabled selected>Choose Reporting Manager</option>
+                            <option *ngFor="let m of getReportingManager;let i = index">       
+                                <ul *ngFor = "let student of getReportingManagerName ;let n = index">
+                                <li>{{student.fullName+' '+student.email}}</li>
+                            </ul></option>
+                        
+                        </select>
+                    </div> -->
+
+                    <div class="form-group">
+                        <select class="form-control text-center" formControlName="reportingManager"
+                            [(ngModel)]="taskService.selectedTask.reportingManager" name="reportingManager">
+                            <option value="" class="text-center" disabled selected>Choose Reporting Manager</option>
+                            <option *ngFor="let m of getReportingManagerName;let i = index">       
+                                <!-- {{m.fullName+' '+m.email}} -->
+                                {{m.fullName}}
+
+                            </option>
+                        
+                        </select>
+                    </div>
+
+     <!--                <div class="form-group">
+                        <input type="text" class="form-control" formControlName="reportingManager"
+                            [(ngModel)]="taskService.selectedTask.reportingManager" name="reportingManager"
+                            placeholder="Reporting Manager">
+                    </div> -->
+
+                    <div class="form-group">
+                        <select class="form-control text-center" formControlName="employeeName" (change)="onChange2($event)"
+                            [(ngModel)]="taskService.selectedTask.employeeName" name="employeeName" >
+                            <option value="" class="text-center" disabled selected>Choose Employee</option>
+                            <option *ngFor="let m of getEmployeeName;let i = index">       
+                                
+                                {{m.fullName}}
+
+                            </option>
+                        
+                        </select>
+                    </div>
+
+                    <!-- <div class="form-group">
+                        <input type="text" class="form-control" formControlName="employeeName"
+                            [(ngModel)]="taskService.selectedTask.employeeName" name="employeeName"
+                            placeholder="Employee Name">
+                    </div> -->
+
+                    
+                    <!-- <div class="form-group">
+                        <select class="form-control text-center" formControlName="employeeEmail"
+                            [(ngModel)]="taskService.selectedTask.employeeEmail" name="employeeEmail" >
+                            <option value="" class="text-center" disabled selected>Employee Email</option>
+                             <option *ngFor="let m of selectedEmp;let i = index">       
+                                
+                                {{m.email}}
+
+                            </option> 
+                            <option value="">{{this.selectedEmp}}</option>
+                        
+                        </select>
+                    </div> -->
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="employeeEmail"
+                            [(ngModel)]="this.getSelectdEmployeeEmailOutOfArray" name="employeeEmail"
+                            placeholder="Employee Email">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="taskName"
+                            [(ngModel)]="taskService.selectedTask.taskName" name="taskName" placeholder="Task Name"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="status" value="No status"
+                            [(ngModel)]="taskService.selectedTask.status" name="status" placeholder=""
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <input type="hidden" class="form-control" formControlName="companyName"
+                            [(ngModel)]="userDetails.companyName" name="companyName" placeholder="Company">
+                    </div>
+
+                    <div class="text-center">
+                        <button class="submitbtm btn btn-info text-center text-white ">Save Task</button>
+                    </div>
+                </form>
+
+                <!-- Success message-->
+                <div class="success" *ngIf="showSucessMessage">
+                    Saved successfully
+                </div>
+
+                <!-- Error message -->
+                <div class="alert" *ngIf="serverErrorMessages">
+                    {{serverErrorMessages}}
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- </div> -->

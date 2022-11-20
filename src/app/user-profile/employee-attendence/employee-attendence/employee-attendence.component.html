@@ -1,0 +1,115 @@
+<!-- <div class="search container"> -->
+    <label class="text-white" for="">{{userDetails.companyName}}</label>
+
+    <div class="upper">
+    <mat-accordion>
+
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+              <mat-panel-title>
+                 Total Employees
+              </mat-panel-title>
+          </mat-expansion-panel-header>
+          
+          <label for="">Total no. of employees: {{this.lengthhh}}</label>
+          <br>
+          <label for="">Total employees present: {{this.present}}</label>
+          <br>
+          <label for="">Total employees absent: {{this.absent}}</label>
+          <br>
+          <label for="">Total employees leave: {{this.leave}}</label>
+          <br>
+
+          <!-- <p>I'm visible because I am open</p> -->
+      </mat-expansion-panel>
+  </mat-accordion>
+</div>
+    <div class="search">
+      <!-- <div class="col-xs-2"> -->
+    <input  [(ngModel)]="FilterText" (keyup)="filterData()" type="text" class="searchbox" placeholder="Search here..">
+    <!-- <input  (keyup)="filterData()" type="text" class="searchbox" placeholder="Search here.." value=""> -->
+    <!-- <button value="{{userDetails.companyName}}" class="btn btn-primary"  (onclick)="filterData()"></button> -->
+      <!-- </div> -->
+
+    </div>
+    <div class="len">
+    
+      <div class="filterAttendence">
+        <mat-form-field appearance="fill" >
+          <mat-select (selectionChange)="onChange($event)" placeholder="Choose status">
+            <mat-option value="p">Present</mat-option>
+            <mat-option value="a">Absent</mat-option>
+            <mat-option value="l">Leave</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <!-- <div class="filterAttendence" (click)="picker.open()">
+        <mat-form-field appearance="fill" >
+              <input matInput [matDatepicker]="picker" >
+              <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <button  (click)="dateChange($event)" type="button">ok</button>
+        </mat-form-field> 
+        </div>-->
+
+      </div>
+  
+    
+    <!-- </div> -->
+    <div class="container">
+    <!-- <div class="mat-elevation-z8"> -->
+    
+    <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8" >
+    
+    
+      <ng-container matColumnDef="fullName">
+        <!-- <th mat-header-cell *matHeaderCellDef mat-sort-header > fullName </th> -->
+        <th mat-header-cell *matHeaderCellDef > Name </th>
+        <td mat-cell *matCellDef="let element" >{{element.fullName}} </td>
+      </ng-container>
+    
+      <!-- <ng-container matColumnDef="companyName">
+        <th mat-header-cell *matHeaderCellDef> Company </th>
+        <td mat-cell *matCellDef="let element" > {{element.companyName}} </td>
+      </ng-container> -->
+    
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.date | date:'mediumDate'}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="attendenceStatus">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef="let element"> 
+          <div *ngIf="this.element.attendenceStatus=='p'">
+            <button class="btn btn-success btn-sm text-white"> Present </button>
+          </div>
+          <div *ngIf="this.element.attendenceStatus=='a'">
+            <button class="btn btn-danger btn-sm text-white"> Absent </button>
+          </div>
+          <div *ngIf="this.element.attendenceStatus=='l'">
+            <button class="btn btn-warning btn-sm text-white"> Leave </button>
+          </div> </td>
+      </ng-container>
+    
+    
+     
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    
+    <mat-paginator [length]="100"
+                  [pageSize]="10"
+                  [pageSizeOptions]="[5, 10, 25, 100]"
+                  aria-label="Select page">
+    </mat-paginator>
+    
+    <ng-template pTemplate="paginatorleft" let-providerList>
+      <span>
+              {{'Showing'}} {{providerList.totalRecords < 1 ? 0 : providerList.first + 1}} {{'to'}}
+        {{providerList.totalRecords > 0 ? ((providerList.rows+ providerList.first) <= providerList.totalRecords ? (providerList.rows + providerList.first) :  providerList.totalRecords) : 0}}
+    {{'of'}} {{providerList.totalRecords ? providerList.totalRecords : 0}} {{'records'}} </span>
+    </ng-template>
+    <!-- </div> -->
+    </div>

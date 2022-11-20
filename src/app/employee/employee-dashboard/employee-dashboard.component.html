@@ -1,0 +1,123 @@
+<div class=" newcontainer" >
+    <mat-sidenav-container autosize >
+        <mat-sidenav #sidenav mode="side" opened="isExpanded">
+          <mat-nav-list>
+            
+      
+            <mat-list-item (click)="isExpanded = !isExpanded">
+              <mat-icon mat-list-icon class="chevron-button" [ngClass]="{ rotated: isExpanded }">menu
+              </mat-icon>
+            </mat-list-item>
+    
+             <mat-list-item  routerLink="/myattendence/{{employeeemail}}" >
+              <mat-icon mat-list-icon>person_add</mat-icon>
+              <span *ngIf="isExpanded" class="menu-item underlineHover"  routerLinkActive="active" skipLocationChange="true">My Attendence</span>
+            </mat-list-item>
+            <mat-list-item  routerLink="/mytask/{{employeeemail}}" >
+              <mat-icon mat-list-icon>dns</mat-icon>
+              <span *ngIf="isExpanded" class="menu-item underlineHover"  routerLinkActive="active" skipLocationChange="true">My Tasks</span>
+            </mat-list-item>
+            <mat-list-item  routerLink="/mynotification/{{employeecompanyName}}" >
+              <mat-icon mat-list-icon>notifications</mat-icon>
+              <span *ngIf="isExpanded" class="menu-item underlineHover"  routerLinkActive="active" skipLocationChange="true">All Notifications</span>
+            </mat-list-item>
+            <mat-list-item  routerLink="/myrequestnotification/{{employeeemail}}" >
+              <mat-icon mat-list-icon>add_alert</mat-icon>
+              <span *ngIf="isExpanded" class="menu-item underlineHover"  routerLinkActive="active" skipLocationChange="true">My Notifications</span>
+            </mat-list-item>
+            <!-- <mat-list-item routerLink="/employees">
+              <mat-icon mat-list-icon>view_list</mat-icon>
+              <span *ngIf="isExpanded" class="menu-item underlineHover"  routerLinkActive="active" skipLocationChange="true">View employee</span>
+            </mat-list-item>
+      
+            <mat-list-item routerLink="/master">
+              <mat-icon mat-list-icon>domain</mat-icon>
+              <span *ngIf="isExpanded" class="menu-item underlineHover"  routerLinkActive="active" skipLocationChange="true">Add masters</span>
+            </mat-list-item>
+    
+    
+             <mat-list-item routerLink="/salary">
+              <mat-icon mat-list-icon>attach_money</mat-icon>
+              <span *ngIf="isExpanded" class="menu-item underlineHover"  routerLinkActive="active" skipLocationChange="true">Employee salary </span>
+            </mat-list-item> 
+    
+      
+    
+           <mat-list-item routerLink="/attendence">
+            <mat-icon mat-list-icon>people</mat-icon>
+            <span *ngIf="isExpanded" class="menu-item underlineHover"  routerLinkActive="active" skipLocationChange="true">Employee attendence </span>
+          </mat-list-item>  -->
+    
+    
+    
+          </mat-nav-list>
+        </mat-sidenav>
+      
+        <!-- Content - rendered Content for the current router path into the <router-outlet>, e.g. /dashboard or /info-->
+        <mat-sidenav-content>
+            <mat-toolbar color="primary">
+                <span>Employee Management System</span>
+    
+                <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" (click)="onLogout()" value="Logout">
+                    <mat-icon>exit_to_app</mat-icon>
+                </button> -->
+                <button mat-button [matMenuTriggerFor]="menu"><mat-icon>person</mat-icon></button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/employeelogin">Sign Out<mat-icon>exit_to_app</mat-icon></button>
+    </mat-menu>
+             </mat-toolbar>
+          
+    
+          <mat-accordion>
+    
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                       Detail Panal
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Registered admin details are {{panelOpenState ? 'below' : 'here'}}
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                
+                Name: {{employeename}}
+                <br>
+                <br>
+                Password: {{employeepassword}}
+                <br>
+                <br>
+                Email: {{employeeemail}} 
+                <br>
+                <br>
+                Phone: {{employeephone}} 
+                <br>
+                <br> 
+                Company Name: {{employeecompanyName}} 
+                <br>
+                <br>
+                Joining Date: {{employeejoiningDate}} 
+                <br>
+                <br>
+                Last Company : {{employeelastCompany}} 
+                <br>
+                <br>
+                Salary: {{employeecurrentSalary}} 
+                <br>
+                <br> 
+            
+            </mat-expansion-panel>
+        </mat-accordion>
+    
+    <br>
+    
+    
+    
+            
+          <!-- <mat-toolbar>
+            <h4>Hello everyone</h4>
+          </mat-toolbar> -->
+          <router-outlet></router-outlet>
+        </mat-sidenav-content>
+      
+      </mat-sidenav-container>
+    </div>

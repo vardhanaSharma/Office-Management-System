@@ -1,0 +1,58 @@
+<div class=" newcontainer" >
+    <mat-sidenav-container autosize >
+        <mat-sidenav-content>
+            <mat-toolbar color="primary">
+                <span>Employee Management System</span>
+    
+                <button mat-button [matMenuTriggerFor]="menu"><mat-icon>person</mat-icon></button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/employeelogin">Sign Out<mat-icon>exit_to_app</mat-icon></button>
+    </mat-menu>
+             </mat-toolbar>
+          
+
+    
+    <br>
+
+    <div *ngFor="let p of notificationdata">
+    <div class="box-body p-0">
+        <div class="p-3 d-flex align-items-center bg-light border-bottom osahan-post-header">
+            <div class="dropdown-list-image mr-3">
+                <mat-icon mat-list-icon>notifications</mat-icon> 
+            </div>
+            <div class="font-weight-bold mr-3">
+                <div class="noti text-truncate">{{p.info}}</div>
+                <!-- <div class="small">Income tax sops on the cards, The bias in VC funding, and other top news for you</div> -->
+            </div>
+            <span class="ml-auto mb-auto">
+             
+                <div class="dt text-right text-muted pt-10">{{p.date}}</div>
+                <div class="dt1 text-right text-muted pt-10">{{p.time}}</div>
+
+            </span>
+            </div>
+        </div>
+    </div>
+    
+<!-- <div *ngFor="let p of notificationdata">
+      <button class="btn btn-secondary" role="button" style="width: 26rem; border: 1px solid black;">
+       <h1>{{p.info}}</h1><div>
+      <br>
+      <h2>{{p.date}}</h2>
+      <br>
+      <br>
+      <h2>{{p.time}}</h2>
+      <br>
+      <br>
+      <h2>{{p.companyName}}</h2>
+      <br>
+    </div>
+  </button>
+    
+  </div> -->
+
+  <router-outlet></router-outlet>
+</mat-sidenav-content>
+
+</mat-sidenav-container>
+</div>

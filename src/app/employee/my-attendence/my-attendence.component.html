@@ -1,0 +1,63 @@
+<!-- <h1 class="h3 mb-3 text-center">Add New Employee</h1> -->
+  <!-- <div class="container d-flex justify-content-center align-items-center py-3 border rounded" style="width: 800px;"> -->
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Add new employee details</h5>
+                    <!-- <h6 class="card-subtitle text-muted">Bootstrap column layout.</h6> -->
+                </div>
+                <div class="card-body">
+                  <form [formGroup]="addAttendence" (ngSubmit)="Submit()">
+                    <div class="form-group">
+                      <input type="text" class="form-control" formControlName="fullName"  [(ngModel)]="employeename[0]" name="fullName"
+                      placeholder="Full Name" required>
+                    </div>
+
+                    <div class="form-group">
+                      <input type="text" onfocus="(this.type='date')" class="form-control text-center" formControlName="date" [(ngModel)]="attendenceService.selectedAttendence.date" name ="joiningDate"
+                      placeholder="date" required>
+                    </div>
+
+                    <div class = "form-group">
+                        <select class = "form-control" formControlName="attendenceStatus" [(ngModel)]="attendenceService.selectedAttendence.attendenceStatus" name ="attendenceStatus">
+                          <option value="" class="text-center" disabled selected >Attendence</option>
+
+                           <option class="text-center" value="p">Present</option>
+                           <option class="text-center" value="a">Absent</option>
+                           <option class="text-center" value="l">Leave</option> 
+                        </select>
+                     </div>
+
+                    <div class="form-group">
+                      <input type="hidden" class="form-control" formControlName="companyName"[(ngModel)]="this.employeecompanyName[0]" name ="companyName"
+                      placeholder="Company" >
+                    </div>
+
+        
+                  
+                      <div class="text-center">
+                      <button class="submitbtm btn btn-info text-center text-white ">Mark</button>
+                      <!-- <input class="text-center" type="submit" value="add empoyee"> -->
+                   </div>
+                  </form> 
+                    
+                    <!-- Success message-->
+                    <div class="success" *ngIf="showSucessMessage">
+                      Saved successfully
+                    </div> 
+                    
+                    <!-- Error message -->
+                     <div class="alert" *ngIf="serverErrorMessages">
+                      {{serverErrorMessages}}
+                    </div>   
+                    
+                    
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+<!-- </div> -->

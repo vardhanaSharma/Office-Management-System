@@ -1,0 +1,180 @@
+<div class=" newcontainer" >
+    <mat-sidenav-container autosize >
+        <mat-sidenav-content>
+            <mat-toolbar color="primary">
+                <span>Employee Management System</span>
+    
+                <button mat-button [matMenuTriggerFor]="menu"><mat-icon>person</mat-icon></button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/employeelogin">Sign Out<mat-icon>exit_to_app</mat-icon></button>
+    </mat-menu>
+             </mat-toolbar>
+    <br>
+    
+<div class="row"> 
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Update task status </h5>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="updateTask">
+
+                     <div class="form-group">
+                        <input type="text" class="form-control" formControlName="projectName"
+                            [(ngModel)]="taskService.selectedTask.projectName"  name="projectName"
+                            placeholder="projectName ">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="hidden" class="form-control" formControlName="reportingManager"
+                            [(ngModel)]="taskService.selectedTask.reportingManager" name="reportingManager"
+                            placeholder="Reporting Manager">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="hidden" class="form-control" formControlName="employeeName"
+                            [(ngModel)]="this.taskService.selectedTask.employeeName" name="employeeName"
+                            placeholder="Employee Name">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="hidden" class="form-control" formControlName="employeeEmail"
+                            [(ngModel)]="this.taskService.selectedTask.employeeEmail"  name="employeeEmail"
+                            placeholder="Employee Email">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="taskName"
+                            [(ngModel)]="taskService.selectedTask.taskName" name="taskName" placeholder="Task Name"
+                            required>
+                    </div>
+
+                    <div class = "form-group">
+                        <select class = "form-control" formControlName="status" [(ngModel)]="taskService.selectedTask.status" name ="status">
+                          <option value="" class="text-center" disabled selected >Task status</option>
+
+                           <option class="text-center" value="1">Started</option>
+                           <option class="text-center" value="25">25%</option>
+                           <option class="text-center" value="50">50%</option> 
+                           <option class="text-center" value="75">75%</option> 
+                           <option class="text-center" value="100">Completed</option> 
+                        </select>
+                     </div>
+
+
+                    <div class="form-group">
+                        <input type="hidden" class="form-control" formControlName="companyName"
+                            [(ngModel)]="taskService.selectedTask.companyName" name="companyName" placeholder="Company">
+                    </div>
+
+                    <div class="text-center">
+                        <button class="submitbtm btn btn-info text-center text-white " (click)="updateData()">Update Status</button>
+                        
+                    </div>
+                   
+                </form>
+
+                <div class="success" *ngIf="showSucessMessage">
+                    Saved successfully
+                </div>
+
+                <div class="alert" *ngIf="serverErrorMessages">
+                    {{serverErrorMessages}}
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    
+        <!--  <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Notification </h5>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="notificationData" [formGroup]="updateTask" (ngSubmit)="Submit()">
+
+                     <div class="form-group">
+                        <input type="text" class="form-control" formControlName="projectName"
+                            [(ngModel)]="taskService.selectedTask.projectName" [(ngModel)]="notificationService.selectedNotification.projectName" name="projectName"
+                            placeholder="projectName ">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="date"
+                            [(ngModel)]="notificationService.selectedNotification.date" name="date"
+                            placeholder="Date">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="time"
+                            [(ngModel)]="notificationService.selectedNotification.time" name="time"
+                            placeholder="Time">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="employeeName"
+                        [(ngModel)]="notificationService.selectedNotification.employeeName" name="employeeName"
+                            placeholder="Employee Name">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="employeeEmail"
+                            [(ngModel)]="notificationService.selectedNotification.employeeEmail" name="employeeEmail"
+                            placeholder="Employee Email">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="taskName" [(ngModel)]="notificationService.selectedNotification.taskName" name="taskName" placeholder="Task Name"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="companyName"
+[(ngModel)]="notificationService.selectedNotification.companyName" name="companyName" placeholder="Company">
+                    </div>
+
+                    <div class="text-center">
+                        <button class="submitbtm btn btn-info text-center text-white " (click)="updateData()">Save</button>
+                    </div>
+                </form>
+
+                <div class="success" *ngIf="showSucessMessage">
+                    Saved successfully
+                </div>
+
+                <div class="alert" *ngIf="serverErrorMessages">
+                    {{serverErrorMessages}}
+                </div>
+
+
+            </div>
+        </div>-->
+  
+
+
+
+
+
+
+
+
+
+          <router-outlet></router-outlet>
+        </mat-sidenav-content>
+      
+      </mat-sidenav-container>
+    </div>
+
+
+
+
+
+
+
+
+

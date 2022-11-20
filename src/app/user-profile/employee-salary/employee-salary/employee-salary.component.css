@@ -1,0 +1,74 @@
+
+/* .titile{
+    margin-top: 3rem;
+} */
+
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+  }
+  section {
+    display: table;
+  }
+  
+  .example-label {
+    display: table-cell;
+    font-size: 14px;
+    margin-left: 8px;
+    min-width: 120px;
+  }
+  
+  .example-button-row {
+    display: table-cell;
+    width: 490px;
+  }
+  
+  .example-button-row .mat-button-base {
+    margin: 8px 8px 8px 0;
+  }
+  
+  .example-flex-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .example-button-container {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+  }
+  .submitbtm{
+    width: 160px;
+    background-color: #4c4eb8fc;
+    justify-content: center;
+    margin: 8px 8px 8px 0;
+  }
+  input[type=text],input[type=password] {
+    background-color: #f6f6f6;
+    border: none;
+    color: #0d0d0d;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px;
+    width: 98%;
+    height: 2.8rem;}
+
+    .card-title{
+        font-size: 16px;
+    }
+    .card{
+      width: 46rem;
+    }
+
+    .col-md-12 {
+      flex: 0 0 auto;
+      width: 100%;
+      position: absolute;
+      left: 243px;
+      top: 157px;}

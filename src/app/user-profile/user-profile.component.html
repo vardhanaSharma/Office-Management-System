@@ -1,0 +1,124 @@
+<div class=" newcontainer" >
+<mat-sidenav-container autosize >
+    <mat-sidenav #sidenav mode="side" opened="isExpanded">
+      <mat-nav-list>
+        
+  
+        <mat-list-item (click)="isExpanded = !isExpanded">
+          <mat-icon mat-list-icon class="chevron-button" [ngClass]="{ rotated: isExpanded }">menu
+          </mat-icon>
+        </mat-list-item>
+
+
+
+
+        <mat-list-item *ngFor="let i of menulist$" routerLink="{{i.planFeature}}" >
+          <mat-icon mat-list-icon>{{i.planFeatureIcon}}}</mat-icon>
+          <span *ngIf="isExpanded" class="menu-item underlineHover"  routerLinkActive="active" skipLocationChange="true">{{i.planFeatureName}}</span>
+        </mat-list-item>
+
+
+     
+
+
+         <!-- <mat-list-item *ngIf="displaymenu1" routerLink="/addempoyee" >
+          <mat-icon mat-list-icon>person_add</mat-icon>
+          <span *ngIf="isExpanded" class="menu-item underlineHover"  routerLinkActive="active" skipLocationChange="true">Add employee</span>
+        </mat-list-item>
+  
+        <mat-list-item *ngIf="displaymenu2" routerLink="/employees">
+          <mat-icon mat-list-icon>view_list</mat-icon>
+          <span *ngIf="isExpanded" class="menu-item underlineHover"  routerLinkActive="active" skipLocationChange="true">View employee</span>
+        </mat-list-item>
+  
+        <mat-list-item routerLink="/master">
+          <mat-icon mat-list-icon>domain</mat-icon>
+          <span *ngIf="isExpanded" class="menu-item underlineHover"  routerLinkActive="active" skipLocationChange="true">Add masters</span>
+        </mat-list-item> -->
+
+        <!-- <ng-container *ngIf="this.userDetails.plan == 'Standard Plan'|| this.userDetails.plan == 'Premium Plan' || this.userDetails.plan == 'Premium Plus Plan' "> -->
+
+         <!-- <mat-list-item routerLink="/salary">
+          <mat-icon mat-list-icon>attach_money</mat-icon>
+          <span *ngIf="isExpanded" class="menu-item underlineHover"  routerLinkActive="active" skipLocationChange="true">Employee salary </span>
+        </mat-list-item>  -->
+
+      <!-- </ng-container> -->
+  
+      <!-- <ng-container *ngIf="this.userDetails.plan == 'Premium Plan' || this.userDetails.plan == 'Premium Plus Plan' "> -->
+
+       <!-- <mat-list-item routerLink="/attendence">
+        <mat-icon mat-list-icon>people</mat-icon>
+        <span *ngIf="isExpanded" class="menu-item underlineHover"  routerLinkActive="active" skipLocationChange="true">Employee attendence </span>
+      </mat-list-item>  -->
+
+    <!-- </ng-container> -->
+
+
+      </mat-nav-list>
+    </mat-sidenav>
+  
+    <!-- Content - rendered Content for the current router path into the <router-outlet>, e.g. /dashboard or /info-->
+    <mat-sidenav-content>
+        <mat-toolbar color="primary">
+            <span>Employee Management System</span>
+
+            <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" (click)="onLogout()" value="Logout">
+                <mat-icon>exit_to_app</mat-icon>
+            </button> -->
+            <button mat-button [matMenuTriggerFor]="menu"><mat-icon>person</mat-icon></button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="onLogout()">Sign Out<mat-icon>exit_to_app</mat-icon></button>
+</mat-menu>
+         </mat-toolbar>
+      
+
+      <mat-accordion>
+
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                   Detail Panal
+                </mat-panel-title>
+                <mat-panel-description>
+                    Registered admin details are {{panelOpenState ? 'below' : 'here'}}
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            
+            First Name: {{userDetails.fullName.split(' ')[0]}} 
+            <br>
+            <br>
+            Last Name: {{userDetails.fullName.split(' ')[1]}}
+            <br>
+            <br>
+            Email: {{userDetails.email}} 
+            <br>
+            <br>
+            Company Name: {{userDetails.companyName}} 
+            <br>
+            <br>
+            Company URL: {{userDetails.companyUrl}} 
+            <br>
+            <br>
+            
+            Plan: {{userDetails.plan}} 
+            <br>
+            <br>
+            <!-- <p>I'm visible because I am open</p> -->
+        </mat-expansion-panel>
+    </mat-accordion>
+   
+<br>
+
+
+
+        
+      <!-- <mat-toolbar>
+        <h4>Hello everyone</h4>
+      </mat-toolbar> -->
+      
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  
+  </mat-sidenav-container>
+</div>

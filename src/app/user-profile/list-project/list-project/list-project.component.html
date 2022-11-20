@@ -1,0 +1,51 @@
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Projects details <br>Total no. of projects: {{this.lengthhh}} </h5>
+                    <!-- <h6 class="card-subtitle text-muted">Bootstrap column layout.</h6> -->
+                </div>
+             <div class="card-body">
+                    <form >
+    
+                        <div class="form-group">
+                            <select class="form-control text-center" formControlName="projectName" (change)="[onChange($event),onChange1($event)]" 
+                                name="projectName">
+                                <option value="" class="text-center" disabled selected>Choose Project</option>
+                                <option *ngFor="let m of getProjects" [value]="m">{{m}}</option>
+                            </select>
+                        </div>
+    
+                        <div class="form-group">
+                            <div class="form-control text-center" formControlName="reportingManager"
+                            name="reportingManager">
+                            <div  value="" class="text-center">
+                                <ul *ngFor="let m of getReportingManagerName;let i = index">
+                                  <li>Name:{{m.fullName+'    '+'  Email: '+m.email}}</li>  
+                                  
+                                </ul>
+                            </div>
+                        </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-control text-center" formControlName="employeeName"name="employeeName">
+                            <div  value="" class="text-center">
+                                <ul *ngFor="let m of getEmployeeName;let i = index">
+                                    <li>Name:{{m.fullName}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                        </div>
+                    </form>
+    
+    
+                </div>
+            </div>
+        </div>
+    
+    </div>
+
+    <label for="" class="selectlist">Select Project form list</label>
+    
+    <!-- </div> -->

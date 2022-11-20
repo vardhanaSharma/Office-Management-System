@@ -1,0 +1,84 @@
+
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<style>
+    .lab{
+        font-weight: 600;
+    }
+    
+</style>
+<main class="content">
+    <div class="container-fluid p-0">
+
+        <!-- <h1 class="h3 mb-3 text-center">Employee Profile</h1> -->
+
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Employee Profile</h5>
+                        <!-- <h6 class="card-subtitle text-muted">Bootstrap column layout.</h6> -->
+                    </div>
+                    <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 c">
+                            <div class="p-4 bor">
+                                <label class="lab">Name: </label>
+                                {{profilearray.fullName}} 
+                            </div>
+                        </div>
+                        <div class="col-md-4 c">
+                            <div class="p-4 bor">
+                                <label class="lab">Email: </label>
+                                {{profilearray.email}} 
+                            </div>
+                        </div>
+                        <div class="col-md-4 c">
+                            <div class="p-4 bor">
+                                <label class="lab">Dept: </label>
+                                {{profilearray.masters}}
+                            </div>
+                        </div>
+                        <div class="col-md-4 c">
+                            <div class="p-4 bor">
+                                <label class="lab">Phone: </label>
+                                {{profilearray.phone}}
+                            </div>
+                        </div>
+                        <div class="col-md-4 c">
+                            <div class="p-4 bor">
+                                <label class="lab">Company: </label>
+                                {{profilearray.companyName}} 
+                            </div>
+                        </div>
+                        <div class="col-md-4 c">
+                            <div class="p-4 bor">
+                                <label class="lab">Joining: </label>
+                                {{profilearray.joiningDate | date:'mediumDate'}} 
+                            </div>
+                        </div>
+                        <div class="col-md-4 c">
+                            <div class="p-4 bor">
+                                <label class="lab">Current Salaray: </label>
+                                {{profilearray.currentSalary}} 
+                            </div>
+                        </div>
+                        <div class="col-md-4 c">
+                            <div class="p-4 bor">
+                                <label class="lab">Last Company: </label>
+                                {{profilearray.lastCompany}} 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</main>

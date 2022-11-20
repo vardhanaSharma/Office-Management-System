@@ -1,0 +1,58 @@
+<div class=" newcontainer" >
+    <mat-sidenav-container autosize >
+        <mat-sidenav #sidenav mode="side" opened="isExpanded">
+          <mat-nav-list>
+      
+            <mat-list-item (click)="isExpanded = !isExpanded">
+              <mat-icon mat-list-icon class="chevron-button" [ngClass]="{ rotated: isExpanded }">menu
+              </mat-icon>
+            </mat-list-item>
+      
+            <mat-list-item  routerLink="/companylist" >
+              <mat-icon mat-list-icon>domain</mat-icon>
+              <span *ngIf="isExpanded" class="menu-item underlineHover"  routerLinkActive="active">Company List</span>
+            </mat-list-item>
+      
+            <mat-list-item  routerLink="/addplan">
+              <mat-icon mat-list-icon>add_to_queue</mat-icon>
+              <span *ngIf="isExpanded" class="menu-item underlineHover"  routerLinkActive="active">Add Plan</span>
+            </mat-list-item>
+
+            <mat-list-item routerLink="/addfeature">
+              <mat-icon mat-list-icon>check_circle_outline</mat-icon>
+              <span *ngIf="isExpanded" class="menu-item underlineHover"  routerLinkActive="active">Add Features</span>
+            </mat-list-item>
+      
+            <mat-list-item routerLink="/listplan">
+              <mat-icon mat-list-icon>format_list_numbered</mat-icon>
+              <span *ngIf="isExpanded" class="menu-item underlineHover"  routerLinkActive="active">Plan List</span>
+            </mat-list-item>
+      
+          </mat-nav-list>
+        </mat-sidenav>
+      
+        <!-- Content - rendered Content for the current router path into the <router-outlet>, e.g. /dashboard or /info-->
+        <mat-sidenav-content>
+            <mat-toolbar color="primary">
+                <span>Employee Management System</span>
+    
+                <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" (click)="onLogout()" value="Logout">
+                    <mat-icon>exit_to_app</mat-icon>
+                </button> -->
+                <button mat-button [matMenuTriggerFor]="menu"><mat-icon>person</mat-icon></button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/superadmin">Sign Out<mat-icon>exit_to_app</mat-icon></button>
+    </mat-menu>
+             </mat-toolbar>
+
+             <mat-card>
+                <label for="">
+                    Welcome to super admin dashboard!!!
+                </label>
+             </mat-card>
+
+          <router-outlet></router-outlet>
+        </mat-sidenav-content>
+      
+      </mat-sidenav-container>
+    </div>

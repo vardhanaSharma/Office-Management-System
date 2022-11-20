@@ -1,0 +1,83 @@
+
+ <h1 class="h3 mb-3 text-center">Edit Employee Details</h1>
+  <div class="container d-flex justify-content-center align-items-center py-3 border rounded" style="width: 800px;">
+
+      <div class="row">
+
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header">
+                      <h5 class="card-title">Fill the details below</h5>
+                      <!-- <h6 class="card-subtitle text-muted">Bootstrap column layout.</h6> -->
+                  </div>
+                  <div class="card-body">
+                    <form [formGroup]="editEmployee">
+                      <div class="form-group">
+                        <input type="text" class="form-control" formControlName="fullName"  [(ngModel)]="employeeService.selectedEmployee.fullName" name="fullName"
+                        placeholder="Full Name" required>
+                        <!-- <input type="text" class="form-control" formControlName="fullName"  [(ngModel)]="employeeService.selectedEmployee.fullName" name="fullName"
+                        placeholder="Full Name" required value="{{editarray.fullName}"> -->
+                      </div>
+
+                      <div class="form-group">
+                        <input type="text" class="form-control" formControlName="email" [(ngModel)]="employeeService.selectedEmployee.email" name="email"
+                        placeholder="Email" required >
+                      </div>
+
+                      <div class="form-group">
+                        <input type="text" class="form-control" formControlName="password" [(ngModel)]="employeeService.selectedEmployee.password" name="password"
+                        placeholder="Password"  >
+                      </div>
+
+                      <div class="form-group">
+                        <input type="text" class="form-control" formControlName="phone" [(ngModel)]="employeeService.selectedEmployee.phone" name ="phone"
+                        placeholder="Phone" required >
+                      </div>
+
+                      <div class = "form-group">
+                        <select class = "form-control" formControlName="masters" [(ngModel)]="employeeService.selectedEmployee.masters" name ="masters">
+                          <option class="text-center" selected ></option>
+                          <option *ngFor="let m of getmasters" [value]="m">{{m}}</option>
+
+                        </select>
+                     </div>
+
+                     <div class="form-group">
+                      <input type="text" onfocus="(this.type='date')" class="form-control text-center" formControlName="joiningDate" [(ngModel)]="employeeService.selectedEmployee.joiningDate" name ="joiningDate"
+                      placeholder="joiningDate" required >
+                    </div>
+
+                    <div class="form-group">
+                      <input type="text" class="form-control" formControlName="currentSalary" [(ngModel)]="employeeService.selectedEmployee.currentSalary" name ="currentSalary"
+                      placeholder="currentSalary" required >
+                    </div>
+
+                    <div class="form-group">
+                      <input type="text" class="form-control" formControlName="lastCompany" [(ngModel)]="employeeService.selectedEmployee.lastCompany" name ="lastCompany"
+                      placeholder="lastCompany" required >
+                    </div>
+                    
+                        <div class="text-center">
+                        <button class="submitbtm btn btn-info text-center text-white " (click)="updateData()">Update Employee</button>
+                        <!-- <input class="text-center" type="submit" value="add empoyee"> -->
+                     </div>
+                    </form> 
+                      
+                      <!-- Success message-->
+                      <div class="success" *ngIf="showSucessMessage">
+                        Saved successfully
+                      </div> 
+                      
+                      <!-- Error message -->
+                       <div class="alert" *ngIf="serverErrorMessages">
+                        {{serverErrorMessages}}
+                      </div>   
+                      
+                      
+                  </div>
+              </div>
+          </div>
+
+      </div>
+
+  </div>

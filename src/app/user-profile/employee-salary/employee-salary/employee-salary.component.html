@@ -1,0 +1,52 @@
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Salary Management</h5>
+                <!-- <h6 class="card-subtitle text-muted">Bootstrap column layout.</h6> -->
+            </div>
+            <div class="card-body">
+
+                <form>
+        
+                    <div class="form-group">
+                      <input type="hidden" class="form-control" formControlName="companyName"[(ngModel)]="userDetails.companyName" name ="companyName"
+                      placeholder="Company" >
+                      <!-- <select class = "form-control" formControlName="companyName" [(ngModel)]="userDetails.companyName" name ="companyName" >
+                        <option class="text-center" selected value={{userDetails.companyName}}>{{userDetails.companyName}}</option>
+                      </select> -->
+                    </div>
+
+                    <div class = "form-group">
+                      <select class = "form-control" formControlName="masters" [(ngModel)]="employeeService.selectedEmployee.masters" name ="masters">
+                        <option value="" class="text-center" disabled selected >Add master</option>
+                        <option *ngFor="let m of getmasters" [value]="m">{{m}}</option>
+
+                        <!-- <option class="text-center text-secondary">Add Master</option>
+
+                         <option class="text-center">Web-development</option>
+                         <option class="text-center">Blockchain</option>
+                         <option class="text-center">Android</option> -->
+                      </select>
+                   </div>
+                  
+                      <div class="text-center">
+                      <!-- <button class="submitbtm btn btn-info text-center text-white ">Add Employee</button> -->
+                      <!-- <input class="text-center" type="submit" value="add empoyee"> -->
+                   </div>
+                  </form> 
+
+                  <mat-form-field>
+                    <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                    
+                               
+            </div>
+        </div>
+    </div>
+
+</div>
+

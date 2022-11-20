@@ -1,0 +1,165 @@
+<div>
+  <img src="/assets/img/users.png" id="icon" alt="User Icon" />
+</div>
+<mat-card>
+
+  <form (ngSubmit)="Submit()" [formGroup]="multistep">
+
+    <div *ngIf="steps==1" formGroupName="mainDetails">
+      <div class="form-group">
+      <input class="form-control" formControlName="fullName" type="text" [(ngModel)]="userService.selectedUser.fullName" name="fullName"
+        placeholder="Full Name" required>
+    </div>
+    <div class="form-group">
+      <input class="form-control" formControlName="email" type="text"  [(ngModel)]="userService.selectedUser.email" name="email" placeholder="Email"
+        required [pattern]="emailRegex">
+      
+    </div>
+    <div class="form-group">
+      <input class="form-control" formControlName="password" type="password"  [(ngModel)]="userService.selectedUser.password" name="password"
+        placeholder="Password" minlength="4" required="">
+  
+  
+    </div>
+  </div>
+  
+    <div *ngIf="steps==2" formGroupName="companyDetails">
+      <div class="form-group">
+      <input class="form-control" formControlName="companyName" type="text" [(ngModel)]="userService.selectedUser.companyName" name="companyName"
+        placeholder="company Name" required >
+        <!-- <label class="validation-message">This field is required.</label> -->
+      </div>
+      <div class="form-group">
+        <input class="form-control" formControlName="companyUrl" type="text" [(ngModel)]="userService.selectedUser.companyUrl" name="companyUrl"
+          placeholder="company Url" required >
+          <!-- <label class="validation-message">This field is required.</label> -->
+        </div>
+
+        <div class="form-group">
+          <input class="form-control" formControlName="plan" type="hidden" [(ngModel)]="userService.selectedUser.plan" name="plan"
+            placeholder="Plan" required >
+          </div>
+
+          <div class="form-group">
+            <input class="form-control" formControlName="maxEmployees" type="hidden" [(ngModel)]="userService.selectedUser.maxEmployees" name="maxEmployees"
+              placeholder="maxEmployees" required >
+            </div>
+
+        <!-- <button class="btn btn-primary"
+        (click)="[autoFill1('free'), makePayment(15)]"
+        role="button">Free Plan</button>
+       <button class="btn btn-primary "
+        (click)="[autoFill1('standard'), makePayment(50)]"        
+        role="button">Standard Plan</button> -->
+            
+    <div *ngFor="let p of planarray">
+      <!-- <button class="btn btn-secondary" (click)="[autoFill1(p.planName), makePayment(p.price), Submit()]" role="button" style="width: 26rem; border: 1px solid black;"><h1>{{p.planName}}</h1><div> -->
+        <button class="btn btn-secondary" (click)="[autoFill1(p.planName),autoFillmax(p.maxEmployee), makePayment(p.price), Submit()]" role="button" style="width: 26rem; border: 1px solid black;"><h1>{{p.planName}}</h1><div>
+
+        <h2>$ {{p.price}} per month</h2>
+        <br>
+        <h2>Employee Range {{p.minEmployee}} to {{p.maxEmployee}}</h2>
+        <br>
+        <h2>{{p.features}}</h2>
+        <br>
+      </div>
+    </button>
+      
+    </div>
+ 
+  <div *ngIf="success">
+    <h1>Your Payment is complete successfully</h1>
+  </div>
+  <div *ngIf="failure">
+      <h1>Some Error is taken place inside the payment</h1>
+  </div>
+      </div>
+    
+    <button class="btn btn-success" type="submit" *ngIf="steps==1" >Next</button>
+    <!-- <button class="btn btn-success" value="Sign Up" type="submit" *ngIf="steps==2" >Sign Up</button> -->
+
+   
+  <!-- Success message-->
+  <div class="success" *ngIf="showSucessMessage">
+    Saved successfully!
+    <!-- <br>
+    Please Sign In now! -->
+  </div> 
+  
+  <!-- Error message -->
+  <div class="alert" *ngIf="serverErrorMessages">
+    {{serverErrorMessages}}
+  </div>  
+  
+  </form>  
+
+  
+
+</mat-card>
+
+
+
+
+
+
+
+
+<!-- 
+<div>
+  <img src="/assets/img/users.png" id="icon" alt="User Icon" />
+</div>
+
+<div *ngIf="steps==1">
+<form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)">
+
+    <input type="text" #fullName="ngModel" [(ngModel)]="userService.selectedUser.fullName" name="fullName"
+      placeholder="Full Name" required [ngClass]="{'invalid-textbox' :signUpForm.submitted && !fullName.valid }">
+    <div *ngIf="signUpForm.submitted && !fullName.valid">
+      <label class="validation-message">This field is required.</label>
+    </div>
+    <input type="text" #email="ngModel" [(ngModel)]="userService.selectedUser.email" name="email" placeholder="Email"
+      required [pattern]="emailRegex" [ngClass]="{'invalid-textbox' :signUpForm.submitted && !email.valid }">
+    <div *ngIf="signUpForm.submitted && email.errors">
+      <label *ngIf="email.errors.required" class="validation-message">This field is required.</label>
+      <label *ngIf="email.errors.pattern" class="validation-message">Invalid email address.</label>
+    </div>
+    <input type="password" #password="ngModel" [(ngModel)]="userService.selectedUser.password" name="password"
+      placeholder="Password" minlength="4" required
+      [ngClass]="{'invalid-textbox' :signUpForm.submitted && !password.valid }">
+    <div *ngIf="signUpForm.submitted && password.errors">
+      <label *ngIf="password.errors.required" class="validation-message">This field is required.</label>
+      <label *ngIf="password.errors.minlength" class="validation-message">Enter atleast 4 characters.</label>
+    </div>
+  
+    <input type="text" #companyName="ngModel" [(ngModel)]="userService.selectedUser.companyName" name="companyName"
+      placeholder="company Name" required [ngClass]="{'invalid-textbox' :signUpForm.submitted && !companyName.valid }">
+    <div *ngIf="signUpForm.submitted">
+      <label class="validation-message">This field is required.</label>
+    </div>
+    <input type="submit" value="Sign Up">
+ 
+</form> -->
+
+<!-- Success message-->
+<!-- <div class="success" *ngIf="showSucessMessage">
+  Saved successfully
+</div>  -->
+
+<!-- Error message -->
+<!-- <div class="alert" *ngIf="serverErrorMessages">
+  {{serverErrorMessages}}
+</div>   
+
+</div>
+
+<div *ngIf="steps==2">
+  <form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)">
+
+    <input type="text" #fullName="ngModel" [(ngModel)]="userService.selectedUser.fullName" name="fullName"
+      placeholder="Full Name" required [ngClass]="{'invalid-textbox' :signUpForm.submitted && !fullName.valid }">
+    <div *ngIf="signUpForm.submitted && !fullName.valid">
+      <label class="validation-message">This field is required.</label>
+    </div>
+    <input type="submit" value="Sign Up">
+ 
+</form> -->

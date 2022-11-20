@@ -1,0 +1,84 @@
+<!-- <h1 class="h3 mb-3 text-center">Add New Employee</h1> -->
+<!-- <div class="container d-flex justify-content-center align-items-center py-3 border rounded" style="width: 800px;"> -->
+<div class="row">
+
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">Add new project details  </h5>
+        <!-- <h6 class="card-subtitle text-muted">Bootstrap column layout.</h6> -->
+      </div>
+      <div class="card-body">
+        <form [formGroup]="addProject" (ngSubmit)="Submit()">
+          <div class="form-group">
+            <input type="text" class="form-control" formControlName="projectName"
+              [(ngModel)]="projectService.selectedProject.projectName" name="projectName" placeholder="Project Name"
+              required>
+          </div>
+
+
+          <div class="form-group">
+            <input type="text" class="form-control" formControlName="projectDesc"
+              [(ngModel)]="projectService.selectedProject.projectDesc" name="projectDesc" placeholder="Description"
+              required>
+          </div>
+
+          <!-- <div class="form-group">
+                      <input type="text" class="form-control" formControlName="reportingManager" [(ngModel)]="projectService.selectedProject.reportingManager" name="reportingManager"
+                      placeholder="Reporting Manager">
+                    </div> -->
+
+                    <div class="form-group">
+                      <ng-multiselect-dropdown class="form-control text-center" formControlName="reportingManager" [placeholder]="'Reporting Manager'" [settings]="dropdownSettings"
+            [data]="employeecountarray" [(ngModel)]="projectService.selectedProject.reportingManager" (onSelect)="onItemSelect($event)"
+            (onSelectAll)="onSelectAll($event)" name="reportingManager">
+          </ng-multiselect-dropdown>
+                    </div>
+
+          <!-- <ng-multiselect-dropdown class="form-control" formControlName="reportingManager" [placeholder]="'Reporting Manager'" [settings]="dropdownSettings"
+            [data]="employeecountarray" [(ngModel)]="projectService.selectedProject.reportingManager" (onSelect)="onItemSelect($event)"
+            (onSelectAll)="onSelectAll($event)" name="reportingManager">
+          </ng-multiselect-dropdown> -->
+<!-- 
+          <div class="form-group">
+            <input type="text" class="form-control text-center" formControlName="projectEmployee"
+              [(ngModel)]="projectService.selectedProject.projectEmployee" name="projectEmployee"
+              placeholder="Project Employee" required>
+          </div> -->
+
+          <div class="form-group">
+            <ng-multiselect-dropdown class="form-control text-center" formControlName="projectEmployee" [placeholder]="'Employees'" [settings]="dropdownSettings"
+  [data]="employeecountarray" [(ngModel)]="projectService.selectedProject.projectEmployee" (onSelect)="onItemSelect($event)"
+  (onSelectAll)="onSelectAll($event)" name="projectEmployee">
+</ng-multiselect-dropdown>
+          </div>
+
+          <div class="form-group">
+            <input type="hidden" class="form-control" formControlName="companyName"
+              [(ngModel)]="userDetails.companyName" name="companyName" placeholder="Company">
+          </div>
+
+          <div class="text-center">
+            <button class="submitbtm btn btn-info text-center text-white ">Save Project</button>
+            <!-- <input class="text-center" type="submit" value="add empoyee"> -->
+          </div>
+        </form>
+
+        <!-- Success message-->
+        <div class="success" *ngIf="showSucessMessage">
+          Saved successfully
+        </div>
+
+        <!-- Error message -->
+        <div class="alert" *ngIf="serverErrorMessages">
+          {{serverErrorMessages}}
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- </div> -->
